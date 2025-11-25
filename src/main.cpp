@@ -79,8 +79,7 @@ void printMenu() {
   Serial.println();
   Serial.println("Wählen Sie einen Eintrag per Eingabe der Nummer:");
   Serial.println("1. Auslesen des Leucht-Zustands einer Ampel");
-  Serial.println("2. Auslesen des Request-Zustands einer Ampel");
-  Serial.println("3. Setzen des Requests bei einer Ampel");
+  Serial.println("2. Setzen des Requests bei einer Ampel");
   Serial.print("\nAuswahl: ");
 }
 
@@ -240,11 +239,8 @@ void serialTask(void *parameter) {
           printAmpelState();
           break;
 
-        case '2':
-          printRequestState();
-          break;
 
-        case '3': {
+        case '2': {
           Event e;
           e.type = EVENT_REQUEST_FROM_SERIAL;
           xQueueSend(g_eventQueue, &e, portMAX_DELAY);
